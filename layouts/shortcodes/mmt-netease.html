@@ -1,0 +1,18 @@
+
+<link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css">
+<link rel="stylesheet" href='{{ "shortcodes/mmt-netease/css/index.css" | relURL }}' />
+<div class="netease-music" data-mid='{{ .Get 0 | default "2280569152" }}'></div>
+<div class="comment-163" title="随机下一条">
+  <span class="pic-backdrop"></span>
+  <div class="commentator">
+    <img class="comment-avatar d-none"/>
+    <span class="comment-nickname"></span>
+  </div>
+  <div class="comment-content"></div>
+  <div class="music-info">
+    <span class="artists-name"></span>
+    <span class="music-name"></span>
+  </div>
+</div>
+<small class="mmt-netease-powered">Powered By <a href="https://github.com/Lruihao/hugo-shortcode-mmt-netease" target="_blank">mmt-netease</a></small>
+<script src='{{ "shortcodes/mmt-netease/js/index.js" | relURL }}'></script>
