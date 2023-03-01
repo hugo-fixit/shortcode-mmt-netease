@@ -1,7 +1,10 @@
 
+{{- $version := "1.0.1" -}}
+{{- $mid := .Get 0 | default "2280569152" -}}
+
 <link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css">
-<link rel="stylesheet" href='{{ "shortcodes/mmt-netease/css/index.css" | relURL }}' />
-<div class="netease-music" data-mid='{{ .Get 0 | default "2280569152" }}'></div>
+<link rel="stylesheet" href='{{ "shortcodes/mmt-netease/css/index.css" | relURL }}?v={{ $version }}' />
+<div class="netease-music" data-mid="{{ $mid }}"></div>
 <div class="comment-163" title="随机下一条">
   <span class="pic-backdrop"></span>
   <div class="commentator">
@@ -14,5 +17,8 @@
     <span class="music-name"></span>
   </div>
 </div>
-<small class="mmt-netease-powered">Powered By <a href="https://github.com/Lruihao/hugo-shortcode-mmt-netease" target="_blank">mmt-netease</a></small>
-<script src='{{ "shortcodes/mmt-netease/js/index.js" | relURL }}'></script>
+<div class="mmt-netease-powered">
+  <span>From <a href="https://music.163.com/#/playlist?id={{ $mid }}" target="_blank">playlist</a>, </span>
+  <span>Powered By <a href="https://github.com/Lruihao/hugo-shortcode-mmt-netease" title="mmt-netease v{{ $version }}" target="_blank">mmt-netease</a></span>
+</div>
+<script src='{{ "shortcodes/mmt-netease/js/index.js" | relURL }}?v={{ $version }}'></script>
