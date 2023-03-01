@@ -20,17 +20,22 @@ theme = ["your-main-theme", "shortcode-mmt-netease"]
 
 要了解 hugo 的主题组件以及如何使用它们，请查看 <https://gohugo.io/hugo-modules/theme-components/>。
 
-## Usage Example
+## Usage
 
-> **Warning** 同一页面只支持使用一次！
+`mmt-netease` shortcode 有以下命名参数：
+
+  - **mid** *[必需]*（第一个位置参数）网易云歌单 ID
+  - **autoplay** *[可选]*（第二个位置参数）是否自动播放，默认：`false`
 
 这是一个用法示例：
 
-```
-{{< mmt-netease "2280569152" >}}
+```markdown
+{{< mmt-netease mid="2280569152" autoplay="false" >}}
+<!-- OR -->
+{{< mmt-netease "2280569152" false >}}
 ```
 
-它只有一个匿名参数，代表获取随机评论及歌曲的**网易云歌单 ID**，例如：[2280569152](https://music.163.com/#/playlist?id=2280569152)。
+> **Warning** 同一页面只支持使用一次！
 
 ## Dependencies
 
