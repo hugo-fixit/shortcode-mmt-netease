@@ -1,11 +1,18 @@
 
-{{- $version := "1.0.3" -}}
+{{- $version := "1.0.4" -}}
 {{- $mid := cond .IsNamedParams (.Get "mid") (.Get 0) | default "2280569152" -}}
 {{- $autoplay := cond .IsNamedParams (.Get "autoplay") (.Get 1) | default false -}}
+{{- $fixed := cond .IsNamedParams (.Get "fixed") (.Get 2) -}}
+{{- $mini := cond .IsNamedParams (.Get "mini") (.Get 3) -}}
+{{- $volume := cond .IsNamedParams (.Get "volume") (.Get 4) -}}
 
 <link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css">
 <link rel="stylesheet" href='{{ "shortcodes/mmt-netease/css/index.css" | relURL }}?v={{ $version }}' />
-<div class="netease-music" data-mid="{{ $mid }}" data-autoplay="{{ $autoplay }}"></div>
+<div class="netease-music" data-mid="{{ $mid }}" data-autoplay="{{ $autoplay }}"
+  {{- with $fixed }} data-fixed="{{ . }}"{{- end -}}
+  {{- with $mini }} data-mini="{{ . }}"{{- end -}}
+  {{- with $volume }} data-volume="{{ . }}"{{- end -}}
+></div>
 <div class="comment-163" title="随机下一条">
   <span class="pic-backdrop"></span>
   <div class="commentator">
