@@ -19,7 +19,7 @@ const RNC = new (function () {
       $comment.querySelector('.pic-backdrop').style.backgroundImage = `url(${comment.data.picurl.slice(5)})`;
       const $avatar = $comment.querySelector('.comment-avatar');
       $avatar.alt = `${comment.data.nickname}'s avatar`;
-      $avatar.src = comment.data.avatarurl.slice(5);
+      $avatar.src = comment.data.avatarurl?.slice(5);
       $avatar.classList.remove('d-none');
       $comment.querySelector('.comment-nickname').innerHTML = comment.data.nickname;
       $comment.querySelector('.comment-content').innerHTML = comment.data.content.replace('\n','<br/>');
