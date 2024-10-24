@@ -1,0 +1,21 @@
+# theme.toml template for a Hugo theme
+# See https://github.com/gohugoio/hugoThemes#themetoml for an example
+
+name = 'shortcode-mmt-netease'
+license = 'MIT'
+licenselink = 'https://github.com/hugo-fixit/shortcode-mmt-netease/LICENSE'
+description = '🎶 一个含有网易云随机评论 shortcode 的 Hugo 主题组件。'
+min_version = "0.134.1"
+
+# The home page of the theme, where the source can be found
+homepage = 'https://github.com/hugo-fixit/shortcode-mmt-netease'
+
+# Taxonomy terms
+tags = ['shortcodes']
+features = ['caniuse', "MMT", "netease"]
+
+# If the theme has a single author
+[author]
+  name = "Lruihao"
+  homepage = "https://lruihao.cn"
+
