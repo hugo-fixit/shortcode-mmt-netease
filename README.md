@@ -1,5 +1,8 @@
 # shortcode-mmt-netease
 
+> [!Caution]
+> 出于保护网易云音乐的版权，本项目不再维护！
+
 ![preview](https://user-images.githubusercontent.com/33419593/221810055-bf78de27-8f5d-4ffa-bf02-f60c0939f169.png)
 
 一个含有网易云随机评论 shortcode 的 Hugo 主题组件。
@@ -75,5 +78,4 @@ theme = ["FixIt", "shortcode-mmt-netease"]
 
 - [APlayer](https://github.com/MoePlayer/APlayer)
 - [MetingJS](https://github.com/metowolf/MetingJS)
-- [UomgAPI](https://api.uomg.com/doc-comments.163.html)
 - [MMT](https://github.com/Lruihao/MMT)
