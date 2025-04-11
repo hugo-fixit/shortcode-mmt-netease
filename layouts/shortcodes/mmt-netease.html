@@ -6,6 +6,7 @@
 {{- $mini := cond .IsNamedParams (.Get "mini") (.Get 3) -}}
 {{- $volume := cond .IsNamedParams (.Get "volume") (.Get 4) -}}
 
+<link rel="stylesheet" href="https://unpkg.com/mmt-webfont/dist/result.css">
 <link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css">
 <link rel="stylesheet" href='{{ "shortcodes/mmt-netease/css/index.css" | relURL }}?v={{ $version }}' />
 <div class="netease-music" data-mid="{{ $mid }}" data-autoplay="{{ $autoplay }}"
