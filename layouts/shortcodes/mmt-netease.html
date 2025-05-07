@@ -1,11 +1,14 @@
 
-{{- $version := "1.1.2" -}}
+{{- $version := "1.2.0" -}}
 {{- $mid := cond .IsNamedParams (.Get "mid") (.Get 0) | default "2280569152" -}}
 {{- $autoplay := cond .IsNamedParams (.Get "autoplay") (.Get 1) | default false -}}
 {{- $fixed := cond .IsNamedParams (.Get "fixed") (.Get 2) -}}
 {{- $mini := cond .IsNamedParams (.Get "mini") (.Get 3) -}}
 {{- $volume := cond .IsNamedParams (.Get "volume") (.Get 4) -}}
+{{- $current := cond .IsNamedParams (.Get "current") (.Get 5) | default false -}}
+{{- $ordinal := .Page.Store.Get "MMTNeteaseOrdinal" | default .Ordinal -}}
 
+{{- if eq $ordinal .Ordinal -}}
 <link rel="stylesheet" href="https://unpkg.com/mmt-webfont/dist/result.css">
 <link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css">
 <link rel="stylesheet" href='{{ "shortcodes/mmt-netease/css/index.css" | relURL }}?v={{ $version }}' />
@@ -13,21 +16,41 @@
   {{- with $fixed }} data-fixed="{{ . }}"{{- end -}}
   {{- with $mini }} data-mini="{{ . }}"{{- end -}}
   {{- with $volume }} data-volume="{{ . }}"{{- end -}}
-></div>
-<div class="comment-163" title="随机下一条">
-  <span class="pic-backdrop"></span>
-  <div class="commentator">
-    <img class="comment-avatar d-none"/>
-    <span class="comment-nickname"></span>
-  </div>
-  <div class="comment-content"></div>
-  <div class="music-info">
-    <span class="artists-name"></span>
-    <span class="music-name"></span>
-  </div>
+  {{- with $current }} data-current="{{ . }}"{{- end -}}
+>
+  <meting-js server="netease" type="playlist" id="{{ $mid }}" list-folded="true" autoplay="{{ $autoplay }}"
+    {{- with $fixed }} fixed="{{ . }}"{{- end -}}
+    {{- with $mini }} mini="{{ . }}"{{- end -}}
+    {{- with $volume }} volume="{{ . }}"{{- end -}}
+  ></meting-js>
 </div>
+<section class="section-comment">
+  <div class="comment-163" title="随机下一条">
+    <span class="pic-backdrop"></span>
+    <div class="commentator">
+      <img class="comment-avatar d-none"/>
+      <span class="comment-nickname"></span>
+    </div>
+    <div class="comment-content"></div>
+    <div class="music-info">
+      <span class="music-name"></span>
+      <span class="artists-name"></span>
+    </div>
+  </div>
+  <div class="loading-indicator-wrapper d-none">
+    <div class="aether-spinner">
+      <div class="rect-one"></div>
+      <div class="rect-two"></div>
+      <div class="rect-three"></div>
+    </div>
+  </div>
+</section>
 <div class="mmt-netease-powered">
   <span>From <a href="https://music.163.com/#/playlist?id={{ $mid }}" target="_blank">playlist</a>, </span>
-  <span>Powered By <a href="https://github.com/Lruihao/hugo-shortcode-mmt-netease" title="mmt-netease v{{ $version }}" target="_blank">mmt-netease</a></span>
+  <span>Powered by <a href="https://github.com/Lruihao/hugo-shortcode-mmt-netease" title="mmt-netease v{{ $version }}" target="_blank">mmt-netease</a>.</span>
 </div>
 <script src='{{ "shortcodes/mmt-netease/js/index.js" | relURL }}?v={{ $version }}'></script>
+{{- .Page.Store.Set "MMTNeteaseOrdinal" .Ordinal -}}
+{{- else -}}
+  {{- warnf "一个页面只能使用一次 mmt-netease shortcode！请删除：%s" .Position -}}
+{{- end -}}
