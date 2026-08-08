@@ -1,5 +1,5 @@
 
-{{- $version := "1.4.0" -}}
+{{- $version := "1.5.0" -}}
 {{- $mid := cond .IsNamedParams (.Get "mid") (.Get 0) | default "2280569152" -}}
 {{- $autoplay := cond .IsNamedParams (.Get "autoplay") (.Get 1) | default false -}}
 {{- $fixed := cond .IsNamedParams (.Get "fixed") (.Get 2) -}}
@@ -11,7 +11,7 @@
 {{- if eq $ordinal .Ordinal -}}
 <link rel="stylesheet" href="https://unpkg.com/mmt-webfont/dist/result.css">
 <link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css">
-<link rel="stylesheet" href='{{ "shortcodes/mmt-netease/css/index.css" | relURL }}?v={{ $version }}' />
+<link rel="stylesheet" href='{{ "mmt-netease/css/index.css" | relURL }}?v={{ $version }}' />
 <div class="netease-music" data-mid="{{ $mid }}" data-autoplay="{{ $autoplay }}"
   {{- with $fixed }} data-fixed="{{ . }}"{{- end -}}
   {{- with $mini }} data-mini="{{ . }}"{{- end -}}
@@ -41,7 +41,7 @@
       <span class="artists-name"></span>
     </div>
   </div>
-  <div class="loading-indicator-wrapper d-none">
+  <div class="loading-indicator-wrapper">
     <div class="aether-spinner">
       <div class="rect-one"></div>
       <div class="rect-two"></div>
@@ -53,7 +53,7 @@
   <span>From <a href="https://music.163.com/#/playlist?id={{ $mid }}" target="_blank">playlist</a>, </span>
   <span>Powered by <a href="https://github.com/Lruihao/hugo-shortcode-mmt-netease" title="mmt-netease v{{ $version }}" target="_blank">mmt-netease</a>.</span>
 </div>
-<script src='{{ "shortcodes/mmt-netease/js/index.js" | relURL }}?v={{ $version }}'></script>
+<script src='{{ "mmt-netease/js/index.js" | relURL }}?v={{ $version }}'></script>
 {{- .Page.Store.Set "MMTNeteaseOrdinal" .Ordinal -}}
 {{- else -}}
   {{- warnf "一个页面只能使用一次 mmt-netease shortcode！请删除：%s" .Position -}}
